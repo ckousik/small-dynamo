@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 
+namespace dynamo {
 namespace routing {
 /* _tree_node defines a node in a routing tree.
  */
@@ -92,5 +93,6 @@ class _tree {
   iterator insert(const Key&, const Contact&);
   ~_tree();
 };
+}
 }
 #endif /* ifndef ROUTING_TREE_H__ */

@@ -1,5 +1,6 @@
 #include "tree.h"
 
+namespace dynamo {
 namespace routing {
 _tree_iter::_tree_iter(_tree_node* node) { cur = node; }
 
@@ -54,4 +55,5 @@ bool _tree_iter::operator!=(const _tree_iter& it) const {
 std::pair<Key, Contact>& _tree_iter::operator*() { return cur->p; }
 
 std::pair<Key, Contact>* _tree_iter::operator->() { return &(cur->p); }
+}
 }

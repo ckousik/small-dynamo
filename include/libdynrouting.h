@@ -3,6 +3,7 @@
 
 #include <vector>
 
+namespace dynamo{
 namespace routing {
 
 class Key {
@@ -31,12 +32,15 @@ class Contact {};
 
 class RoutingTableBase {
  public:
+  virtual ~RoutingTableBase() {};
   virtual void insert(const Key&, const Contact&) = 0;
   virtual void erase(const Key&) = 0;
-  virtual std::pair<bool, Contact> get(const Key&) = 0;
-  virtual std::vector<Contact> get_preferred(const Key&) = 0;
+  virtual std::pair<Contact, bool> get(const Key&) const = 0;
+  virtual std::vector<Contact> get_preferred(const Key&, 
+      std::size_t) const = 0;
 };
 
 RoutingTableBase* get_routing_table();
+}
 }
 #endif

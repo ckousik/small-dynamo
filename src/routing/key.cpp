@@ -3,6 +3,7 @@
 #include <cstring>
 #include <random>
 
+namespace dynamo {
 namespace routing {
 Key::Key() { memset(this->id, 0, LENGTH * sizeof(unsigned char)); }
 
@@ -55,4 +56,5 @@ bool Key::operator>=(const Key& _rhs) const { return !(*this < _rhs); }
 bool Key::operator>(const Key& _rhs) const { return !(*this <= _rhs); }
 
 bool Key::operator!=(const Key& _rhs) const { return !(*this == _rhs); }
+}
 }

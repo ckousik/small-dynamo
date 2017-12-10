@@ -5,14 +5,15 @@ INCLUDE=../../include
 BIN=../../bin
 
 test: all
-	$(CC) $(CFLAGS) -I$(INCLUDE) routing_tree_test.cpp -L$(LIB) -ldynrouting -o $(BIN)/test_routing
+	make -C test
 
 all: sources
 	ar -rcs $(LIB)/libdynrouting.a *.o && \
 		rm *.o
 
 sources: format
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c tree.cpp key.cpp _tree_iter.cpp _tree_node.cpp
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c _tree.cpp key.cpp _tree_iter.cpp _tree_node.cpp \
+		tree_table.cpp
 
 format:
 	clang-format -style=Google -i *.cpp *.h

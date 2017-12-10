@@ -1,10 +1,11 @@
-#include "tree.h"
 #include <queue>
+#include "tree.h"
 
 #ifdef DEBUG
 #include <cassert>
 #endif
 
+namespace dynamo {
 namespace routing {
 
 _tree::_tree() {
@@ -390,5 +391,6 @@ void _tree::__right_rotate(_tree_node* y) {
   }
   y->parent = x;
   x->right = y;
+}
 }
 }

@@ -1,10 +1,10 @@
-#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
 #include <set>
 #include <vector>
 #include "tree.h"
 
+using namespace dynamo;
 TEST_CASE("insert and ensure size and order", "[tree, tree_iter]") {
   using namespace routing;
   auto tree = _tree();

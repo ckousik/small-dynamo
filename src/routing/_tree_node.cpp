@@ -1,5 +1,6 @@
 #include "tree.h"
 
+namespace dynamo {
 namespace routing {
 
 Key _tree_node::key() const { return this->p.first; }
@@ -53,5 +54,6 @@ void _set_colour(_tree_node* node, bool colour) {
     return;
   }
   node->colour = colour;
+}
 }
 }
