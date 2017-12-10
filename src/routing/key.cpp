@@ -1,4 +1,7 @@
-#include "key.h"
+#include "libdynrouting.h"
+
+#include <cstring>
+#include <random>
 
 namespace routing {
 Key::Key() { memset(this->id, 0, LENGTH * sizeof(unsigned char)); }

@@ -1,10 +1,10 @@
-#ifndef ROUTING_KEY_H__
-#define ROUTING_KEY_H__
+#ifndef LIBDYNROUTING_H__
+#define LIBDYNROUTING_H__
 
-#include <cstring>
-#include <random>
+#include <vector>
 
 namespace routing {
+
 class Key {
  public:
   // constructors
@@ -25,5 +25,18 @@ class Key {
  private:
   unsigned char id[LENGTH];
 };
+
+// TODO: Populate contact fields
+class Contact {};
+
+class RoutingTableBase {
+ public:
+  virtual void insert(const Key&, const Contact&) = 0;
+  virtual void erase(const Key&) = 0;
+  virtual std::pair<bool, Contact> get(const Key&) = 0;
+  virtual std::vector<Contact> get_preferred(const Key&) = 0;
+};
+
+RoutingTableBase* get_routing_table();
 }
-#endif /* ifndef ROUTING_KEY_H__*/
+#endif

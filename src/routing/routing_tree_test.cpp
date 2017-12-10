@@ -9,7 +9,7 @@ TEST_CASE("insert and ensure size and order", "[tree, tree_iter]") {
   using namespace routing;
   auto tree = _tree();
   std::set<Key> s;
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < 2000; i++) {
     auto key = Key::random();
     s.insert(key);
     tree.insert(key, Contact());
@@ -27,7 +27,7 @@ TEST_CASE("erase and ensure size and order", "[tree, tree_iter]") {
   using namespace routing;
   auto tree = _tree();
   std::set<Key> s;
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < 2000; i++) {
     auto key = Key::random();
     s.insert(key);
     tree.insert(key, Contact());

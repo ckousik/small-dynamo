@@ -1,8 +1,7 @@
 #ifndef ROUTING_TREE_H__
 #define ROUTING_TREE_H__
 
-#include "contact.h"
-#include "key.h"
+#include "libdynrouting.h"
 
 #include <utility>
 #include <vector>

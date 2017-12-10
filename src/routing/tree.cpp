@@ -2,7 +2,7 @@
 #include <queue>
 
 #ifdef DEBUG
-#include <iostream>
+#include <cassert>
 #endif
 
 namespace routing {
@@ -101,15 +101,15 @@ _tree_node* _tree::__insert(_tree_node* node) {
 }
 
 _tree_iter _tree::insert(const Key& key, const Contact& contact) {
+#ifdef DEBUG
+  assert(_is_black(root));
+#endif
   auto node = new _tree_node(key, contact, 0x0, 0x0, 0x0);
   _set_colour(node, _tree_node::RED);
   node = __insert(node);
   while (node != root && _is_red(_parent(node))) {
     // case 1:
     if (_is_red(_uncle(node))) {
-#ifdef DEBUG
-      std::cout << "insert: case 1: " << std::endl;
-#endif
       _set_colour(_parent(node), _tree_node::BLACK);
       _set_colour(_uncle(node), _tree_node::BLACK);
       _set_colour(_parent(_parent(node)), _tree_node::RED);
@@ -137,6 +137,13 @@ _tree_iter _tree::insert(const Key& key, const Contact& contact) {
     }
   }
   _set_colour(root, _tree_node::BLACK);
+#ifdef DEBUG
+  assert(node != 0x0);
+  if (_is_red(node)) {
+    assert(_is_black(node->left));
+    assert(_is_black(node->right));
+  }
+#endif
   return _tree_iter(node);
 }
 
